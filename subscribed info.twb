@@ -1,0 +1,1355 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10100.16.1223.0056                               -->
+<workbook source-build='10.1.3 (10100.16.1223.0056)' source-platform='win' version='10.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='subscriptions+ (oneclass)' inline='true' name='federated.14kx08u0j7xb2v19f7bes1pn93xa' version='10.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='postgres.0bklvn60owozbb1f8fa5n1x40hys'>
+            <connection authentication='username-password' class='postgres' dbname='oneclass' odbc-native-protocol='' port='5432' server='localhost' username='postgres' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[subscriptions].[user_id]' />
+              <expression op='[votes].[user_id]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[subscriptions].[user_id]' />
+                <expression op='[users].[id]' />
+              </expression>
+            </clause>
+            <relation join='left' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[departments].[school_id]' />
+                  <expression op='[schools].[id]' />
+                </expression>
+              </clause>
+              <relation join='left' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[courses].[department_id]' />
+                    <expression op='[departments].[id]' />
+                  </expression>
+                </clause>
+                <relation join='left' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[enrollments].[course_id]' />
+                      <expression op='[courses].[id]' />
+                    </expression>
+                  </clause>
+                  <relation join='left' type='join'>
+                    <clause type='join'>
+                      <expression op='='>
+                        <expression op='[subscriptions].[user_id]' />
+                        <expression op='[enrollments].[user_id]' />
+                      </expression>
+                    </clause>
+                    <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='subscriptions' table='[public].[subscriptions]' type='table' />
+                    <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='enrollments' table='[public].[enrollments]' type='table' />
+                  </relation>
+                  <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='courses' table='[public].[courses]' type='table' />
+                </relation>
+                <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='departments' table='[public].[departments]' type='table' />
+              </relation>
+              <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='schools' table='[public].[schools]' type='table' />
+            </relation>
+            <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='users' table='[public].[users]' type='table' />
+          </relation>
+          <relation connection='postgres.0bklvn60owozbb1f8fa5n1x40hys' name='votes' table='[public].[votes]' type='table' />
+        </relation>
+        <cols>
+          <map key='[active]' value='[subscriptions].[active]' />
+          <map key='[code]' value='[courses].[code]' />
+          <map key='[country_id (users)]' value='[users].[country_id]' />
+          <map key='[country_id]' value='[schools].[country_id]' />
+          <map key='[course_id]' value='[enrollments].[course_id]' />
+          <map key='[courses_count (schools)]' value='[schools].[courses_count]' />
+          <map key='[courses_count]' value='[departments].[courses_count]' />
+          <map key='[created_at (courses)]' value='[courses].[created_at]' />
+          <map key='[created_at (enrollments)]' value='[enrollments].[created_at]' />
+          <map key='[created_at (users)]' value='[users].[created_at]' />
+          <map key='[created_at (votes)]' value='[votes].[created_at]' />
+          <map key='[created_at]' value='[subscriptions].[created_at]' />
+          <map key='[current_balance]' value='[users].[current_balance]' />
+          <map key='[department_id (courses)]' value='[courses].[department_id]' />
+          <map key='[department_id]' value='[enrollments].[department_id]' />
+          <map key='[departments_count]' value='[schools].[departments_count]' />
+          <map key='[document_id]' value='[votes].[document_id]' />
+          <map key='[documents_count (departments)]' value='[departments].[documents_count]' />
+          <map key='[documents_count (users)]' value='[users].[documents_count]' />
+          <map key='[documents_count]' value='[courses].[documents_count]' />
+          <map key='[downloads_count (users)]' value='[users].[downloads_count]' />
+          <map key='[downloads_count]' value='[courses].[downloads_count]' />
+          <map key='[email]' value='[users].[email]' />
+          <map key='[enrollments_count (departments)]' value='[departments].[enrollments_count]' />
+          <map key='[enrollments_count (users)]' value='[users].[enrollments_count]' />
+          <map key='[enrollments_count]' value='[courses].[enrollments_count]' />
+          <map key='[id (courses)]' value='[courses].[id]' />
+          <map key='[id (departments)]' value='[departments].[id]' />
+          <map key='[id (enrollments)]' value='[enrollments].[id]' />
+          <map key='[id (schools)]' value='[schools].[id]' />
+          <map key='[id (users)]' value='[users].[id]' />
+          <map key='[id (votes)]' value='[votes].[id]' />
+          <map key='[id]' value='[subscriptions].[id]' />
+          <map key='[kind]' value='[subscriptions].[kind]' />
+          <map key='[like_vote]' value='[votes].[like_vote]' />
+          <map key='[name (departments)]' value='[departments].[name]' />
+          <map key='[name (schools)]' value='[schools].[name]' />
+          <map key='[name (users)]' value='[users].[name]' />
+          <map key='[name]' value='[courses].[name]' />
+          <map key='[referrals_count]' value='[users].[referrals_count]' />
+          <map key='[school_id (courses)]' value='[courses].[school_id]' />
+          <map key='[school_id (departments)]' value='[departments].[school_id]' />
+          <map key='[school_id (users)]' value='[users].[school_id]' />
+          <map key='[school_id]' value='[enrollments].[school_id]' />
+          <map key='[sign_in_count]' value='[users].[sign_in_count]' />
+          <map key='[status]' value='[users].[status]' />
+          <map key='[user_id (enrollments)]' value='[enrollments].[user_id]' />
+          <map key='[user_id (votes)]' value='[votes].[user_id]' />
+          <map key='[user_id]' value='[subscriptions].[user_id]' />
+          <map key='[votes_count]' value='[users].[votes_count]' />
+          <map key='[year]' value='[users].[year]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[subscriptions]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[subscriptions]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kind</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[kind]</local-name>
+            <parent-name>[subscriptions]</parent-name>
+            <remote-alias>kind</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at]</local-name>
+            <parent-name>[subscriptions]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[active]</local-name>
+            <parent-name>[subscriptions]</parent-name>
+            <remote-alias>active</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (enrollments)]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>school_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[school_id]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>school_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>department_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[department_id]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>department_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id (enrollments)]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (enrollments)]</local-name>
+            <parent-name>[enrollments]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (courses)]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[code]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>code</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (courses)]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>school_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[school_id (courses)]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>school_id</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>department_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[department_id (courses)]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>department_id</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>documents_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[documents_count]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>documents_count</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>enrollments_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[enrollments_count]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>enrollments_count</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>downloads_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[downloads_count]</local-name>
+            <parent-name>[courses]</parent-name>
+            <remote-alias>downloads_count</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (departments)]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (departments)]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>school_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[school_id (departments)]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>school_id</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>courses_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[courses_count]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>courses_count</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>documents_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[documents_count (departments)]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>documents_count</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>enrollments_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[enrollments_count (departments)]</local-name>
+            <parent-name>[departments]</parent-name>
+            <remote-alias>enrollments_count</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (schools)]</local-name>
+            <parent-name>[schools]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (schools)]</local-name>
+            <parent-name>[schools]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>departments_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[departments_count]</local-name>
+            <parent-name>[schools]</parent-name>
+            <remote-alias>departments_count</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>courses_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[courses_count (schools)]</local-name>
+            <parent-name>[schools]</parent-name>
+            <remote-alias>courses_count</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[country_id]</local-name>
+            <parent-name>[schools]</parent-name>
+            <remote-alias>country_id</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[email]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>email</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>status</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[status]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>status</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_balance</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[current_balance]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>current_balance</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>school_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[school_id (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>school_id</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>downloads_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[downloads_count (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>downloads_count</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>documents_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[documents_count (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>documents_count</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>enrollments_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[enrollments_count (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>enrollments_count</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>referrals_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[referrals_count]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>referrals_count</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>votes_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[votes_count]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>votes_count</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sign_in_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sign_in_count]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>sign_in_count</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[country_id (users)]</local-name>
+            <parent-name>[users]</parent-name>
+            <remote-alias>country_id</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (votes)]</local-name>
+            <parent-name>[votes]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[user_id (votes)]</local-name>
+            <parent-name>[votes]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>like_vote</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[like_vote]</local-name>
+            <parent-name>[votes]</parent-name>
+            <remote-alias>like_vote</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (votes)]</local-name>
+            <parent-name>[votes]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>document_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[document_id]</local-name>
+            <parent-name>[votes]</parent-name>
+            <remote-alias>document_id</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Active' datatype='boolean' name='[active]' role='dimension' type='nominal' />
+      <column caption='Code' datatype='string' name='[code]' role='dimension' type='nominal' />
+      <column caption='Country Id (Users)' datatype='integer' name='[country_id (users)]' role='dimension' type='ordinal' />
+      <column caption='Country Id' datatype='integer' name='[country_id]' role='dimension' type='ordinal' />
+      <column caption='Course Id' datatype='integer' name='[course_id]' role='dimension' type='ordinal' />
+      <column caption='Courses Count (Schools)' datatype='integer' name='[courses_count (schools)]' role='measure' type='quantitative' />
+      <column caption='Courses Count' datatype='integer' name='[courses_count]' role='measure' type='quantitative' />
+      <column caption='Created At (Courses)' datatype='datetime' name='[created_at (courses)]' role='dimension' type='ordinal' />
+      <column caption='Created At (Enrollments)' datatype='datetime' name='[created_at (enrollments)]' role='dimension' type='ordinal' />
+      <column caption='Created At (Users)' datatype='datetime' name='[created_at (users)]' role='dimension' type='ordinal' />
+      <column caption='Created At (Votes)' datatype='datetime' name='[created_at (votes)]' role='dimension' type='ordinal' />
+      <column caption='Created At' datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+      <column caption='Current Balance' datatype='integer' name='[current_balance]' role='measure' type='quantitative' />
+      <column caption='Department Id (Courses)' datatype='integer' name='[department_id (courses)]' role='dimension' type='ordinal' />
+      <column caption='Department Id' datatype='integer' name='[department_id]' role='dimension' type='ordinal' />
+      <column caption='Departments Count' datatype='integer' name='[departments_count]' role='measure' type='quantitative' />
+      <column caption='Document Id' datatype='integer' name='[document_id]' role='dimension' type='ordinal' />
+      <column caption='Documents Count (Departments)' datatype='integer' name='[documents_count (departments)]' role='measure' type='quantitative' />
+      <column caption='Documents Count (Users)' datatype='integer' name='[documents_count (users)]' role='measure' type='quantitative' />
+      <column caption='Documents Count' datatype='integer' name='[documents_count]' role='measure' type='quantitative' />
+      <column caption='Downloads Count (Users)' datatype='integer' name='[downloads_count (users)]' role='measure' type='quantitative' />
+      <column caption='Downloads Count' datatype='integer' name='[downloads_count]' role='measure' type='quantitative' />
+      <column caption='Email' datatype='string' name='[email]' role='dimension' type='nominal' />
+      <column caption='Enrollments Count (Departments)' datatype='integer' name='[enrollments_count (departments)]' role='measure' type='quantitative' />
+      <column caption='Enrollments Count (Users)' datatype='integer' name='[enrollments_count (users)]' role='measure' type='quantitative' />
+      <column caption='Enrollments Count' datatype='integer' name='[enrollments_count]' role='measure' type='quantitative' />
+      <column caption='Id (Courses)' datatype='integer' name='[id (courses)]' role='dimension' type='ordinal' />
+      <column caption='Id (Departments)' datatype='integer' name='[id (departments)]' role='dimension' type='ordinal' />
+      <column caption='Id (Enrollments)' datatype='integer' name='[id (enrollments)]' role='dimension' type='ordinal' />
+      <column caption='Id (Schools)' datatype='integer' name='[id (schools)]' role='dimension' type='ordinal' />
+      <column caption='Id (Users)' datatype='integer' name='[id (users)]' role='dimension' type='ordinal' />
+      <column caption='Id (Votes)' datatype='integer' name='[id (votes)]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Kind' datatype='string' name='[kind]' role='dimension' type='nominal' />
+      <column caption='Like Vote' datatype='boolean' name='[like_vote]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='%null%' value='not voted' />
+          <alias key='true' value='Voted' />
+        </aliases>
+      </column>
+      <column caption='Name (Departments)' datatype='string' name='[name (departments)]' role='dimension' type='nominal' />
+      <column caption='Name (Schools)' datatype='string' name='[name (schools)]' role='dimension' type='nominal' />
+      <column caption='Name (Users)' datatype='string' name='[name (users)]' role='dimension' type='nominal' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Referrals Count' datatype='integer' name='[referrals_count]' role='measure' type='quantitative' />
+      <column caption='School Id (Courses)' datatype='integer' name='[school_id (courses)]' role='dimension' type='ordinal' />
+      <column caption='School Id (Departments)' datatype='integer' name='[school_id (departments)]' role='dimension' type='ordinal' />
+      <column caption='School Id (Users)' datatype='integer' name='[school_id (users)]' role='dimension' type='ordinal' />
+      <column caption='School Id' datatype='integer' name='[school_id]' role='dimension' type='ordinal' />
+      <column caption='Sign In Count' datatype='integer' name='[sign_in_count]' role='measure' type='quantitative' />
+      <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+      <column caption='User Id (Enrollments)' datatype='integer' name='[user_id (enrollments)]' role='dimension' type='ordinal' />
+      <column caption='User Id (Votes)' datatype='integer' name='[user_id (votes)]' role='dimension' type='ordinal' />
+      <column caption='User Id' datatype='integer' name='[user_id]' role='dimension' type='ordinal' />
+      <column caption='Votes Count' datatype='integer' name='[votes_count]' role='measure' type='quantitative' />
+      <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[like_vote]' derivation='None' name='[none:like_vote:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.594663' measure-ordering='alphabetic' measure-percentage='0.405337' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:like_vote:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>true</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Subscribers Statistics</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='subscriptions+ (oneclass)' name='federated.14kx08u0j7xb2v19f7bes1pn93xa' />
+          </datasources>
+          <datasource-dependencies datasource='federated.14kx08u0j7xb2v19f7bes1pn93xa'>
+            <column-instance column='[downloads_count (users)]' derivation='Count' name='[cnt:downloads_count (users):qk]' pivot='key' type='quantitative' />
+            <column caption='Downloads Count (Users)' datatype='integer' name='[downloads_count (users)]' role='measure' type='quantitative' />
+            <column caption='Like Vote' datatype='boolean' name='[like_vote]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='%null%' value='not voted' />
+                <alias key='true' value='Voted' />
+              </aliases>
+            </column>
+            <column caption='Name (Schools)' datatype='string' name='[name (schools)]' role='dimension' type='nominal' />
+            <column-instance column='[like_vote]' derivation='None' name='[none:like_vote:nk]' pivot='key' type='nominal' />
+            <column-instance column='[name (schools)]' derivation='None' name='[none:name (schools):nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:name (schools):nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:name (schools):nk]' />
+              <groupfilter function='member' level='[none:name (schools):nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:name (schools):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[cnt:downloads_count (users):qk]' scope='rows' value='Count of Subscribers' />
+            <format attr='subtitle' class='0' field='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[cnt:downloads_count (users):qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[cnt:downloads_count (users):qk]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:like_vote:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[cnt:downloads_count (users):qk]</rows>
+        <cols>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:name (schools):nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size maxheight='600' maxwidth='800' minheight='600' minwidth='800' preset-index='3' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='80000' x='0' y='0'>
+              <zone h='100000' id='1' name='Sheet 1' w='80000' x='0' y='0' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='20000' x='80000' y='0'>
+              <zone h='11668' id='6' name='Sheet 1' pane-specification-id='0' param='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:like_vote:nk]' type='color' w='20000' x='80000' y='0' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='30'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='128'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='24'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='128'>
+            <card pane-specification-id='0' param='[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:like_vote:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:id (referrals):ok]</field>
+            <field>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:like_vote:nk]</field>
+            <field>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:name (schools):nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[federated.14kx08u0j7xb2v19f7bes1pn93xa].[none:like_vote:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Dashboard 1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      +3/MOcAUZzSJBAAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>
